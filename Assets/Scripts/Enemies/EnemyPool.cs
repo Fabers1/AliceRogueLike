@@ -17,14 +17,15 @@ public class EnemyPool : MonoBehaviour
         InitializePool();
     }
 
-    private void Update()
+    public void BtnTest()
     {
-        // Press T to test spawn
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            SpawnEnemy(new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2.5f)));
-            Debug.Log($"Active enemies: {GetActiveEnemyCount()}");
-        }
+        SpawnEnemy(new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2.5f)));
+        Debug.Log($"Active enemies: {GetActiveEnemyCount()}");
+    }
+
+    public EnemyData GetEnemyData()
+    {
+        return enemyData;
     }
 
     void InitializePool()

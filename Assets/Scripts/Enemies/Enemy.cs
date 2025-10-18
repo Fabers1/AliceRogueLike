@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 
     EnemyPool ownerPool;
 
+    public System.Action<Enemy> OnDeath;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +33,8 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
+        OnDeath?.Invoke(this);
+
         ReturnToPool();
     }
 
@@ -48,11 +52,15 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+        }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
-
         else if (collision.gameObject.CompareTag("Wall"))
         {
             Vector3 currentScale = transform.localScale;

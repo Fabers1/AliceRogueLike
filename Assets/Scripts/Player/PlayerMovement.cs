@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform bottomPos;
     [SerializeField] LayerMask floorLayer;
     [SerializeField] float bottomSize = 1.5f;
+    public GameObject characterSprite;
 
     public float originalSpeed;
     public float jumpForce;
@@ -70,9 +71,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        Vector3 currentScale = transform.localScale;
+        Vector3 currentScale = characterSprite.transform.localScale;
         currentScale.x *= -1;
-        transform.localScale = currentScale;
+        characterSprite.transform.localScale = currentScale;
 
         facingRight = !facingRight;
     }

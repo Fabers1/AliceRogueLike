@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour
         {
             Debug.Log("Enemy hit!");
 
-            player.xp++;
+            player.xp += 100;
 
             if (player.xp >= player.xpThreshold) 
             {
