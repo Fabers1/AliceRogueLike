@@ -22,11 +22,21 @@ MonoBehaviour:
     minSpawnDelay: 1
     maxSpawnDelay: 3
   spawnPoints:
-  - {x: 2, y: -1.5}
-  - {x: -2, y: 0}
-  - {x: 0, y: 2}
+  - {x: -7.4, y: -0.96}
+  - {x: 7, y: -0.96}
+  - {x: 6.59, y: 3.05}
+  - {x: -6.45, y: 3.05}
+  - {x: -6.45, y: 5.05}
+  - {x: 7, y: 5.05}
+  - {x: 7, y: -3}
+  - {x: -7, y: -3}
+  - {x: 1.7, y: 1.1}
+  - {x: -2.8, y: 1.1}
+  - {x: 0, y: 3}
+  - {x: 0, y: 5}
+  - {x: 0, y: -3}
   initialSpawnDelay: 1
-  spawnCheckInterval: 0.5
+  spawnCheckInterval: 1.5
   waitForCompletion: 1
   healthMultiplier: 1
   speedMultiplier: 1

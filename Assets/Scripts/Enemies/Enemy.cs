@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
+            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {

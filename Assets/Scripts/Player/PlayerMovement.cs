@@ -24,9 +24,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float dropDuration = 0.3f;
 
-    float modifiedSpeed;
+    [HideInInspector]
+    public float modifiedSpeed;
     GameObject currentPlatform;
-    bool facingRight;
+    bool facingRight = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,6 +42,22 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void MoveLeft(InputAction.CallbackContext context)
+    {
+        if(context.started)
+            moveInput.x = -1;
+        else if(context.canceled)
+            moveInput.x = 0;
+    }
+
+    public void MoveRight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            moveInput.x = 1;
+        else if (context.canceled)
+            moveInput.x = 0;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -61,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocityX = moveInput.x * originalSpeed;
+        rb.linearVelocityX = moveInput.x * modifiedSpeed;
 
         if ((moveInput.x > 0 && !facingRight) || (moveInput.x < 0 && facingRight)) 
         {

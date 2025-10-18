@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public PlayerStats playerHealth;
     public Slider healthSlider;
     public TextMeshProUGUI healthText;
 

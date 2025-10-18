@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public PlayerHealth player;
+    public PlayerStats player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
