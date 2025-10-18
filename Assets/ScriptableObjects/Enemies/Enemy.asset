@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f1f4675e5d3bc4a81130ee51a1628a, type: 3}
+  m_Name: Enemy
+  m_EditorClassIdentifier: 
+  enemyName: Card
+  moveSpeed: 3
+  prefab: {fileID: 251388357990432521, guid: b0fb6a00bf1d2e84b85995e1f41117a4, type: 3}
