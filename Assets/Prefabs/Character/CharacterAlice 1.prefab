@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 2214887734095844229}
   - component: {fileID: 1723468976269751225}
   - component: {fileID: 8635431779975870775}
+  - component: {fileID: 4671182073254298687}
   m_Layer: 0
   m_Name: CharacterAlice 1
   m_TagString: Player
@@ -561,7 +562,31 @@ MonoBehaviour:
   curMaxHealth: 3
   curHealth: 0
   maxInsanity: 50
+  curInsanity: 0
   insanityDelay: 10
+  insanityActive: 0
   xp: 0
   xpThreshold: 1000
   level: 1
+--- !u!95 &4671182073254298687
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949251271099845971}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 074fd242833a5ed49a9c120bb6f5b218, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

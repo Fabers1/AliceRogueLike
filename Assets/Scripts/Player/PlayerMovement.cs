@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
 
     Rigidbody2D rb;
+    //Animator anim;
 
     [SerializeField] Transform bottomPos;
     [SerializeField] LayerMask floorLayer;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float modifiedSpeed;
     GameObject currentPlatform;
     bool facingRight = true;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
         jumpAction = InputSystem.actions.FindAction("Jump");
 
         modifiedSpeed = originalSpeed;
+
+        //anim = GetComponent<Animator>();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -45,18 +49,40 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveLeft(InputAction.CallbackContext context)
     {
-        if(context.started)
+
+        if (context.started)
+        {
             moveInput.x = -1;
-        else if(context.canceled)
+           // anim.SetBool("IsMoving", true);
+        }
+
+        else if (context.canceled)
+        {
+            
             moveInput.x = 0;
+            //anim.SetBool("IsMoving", false);
+        }
+
+
+
+
+
     }
 
     public void MoveRight(InputAction.CallbackContext context)
     {
+
         if (context.started)
+        {
             moveInput.x = 1;
+           // anim.SetBool("IsMoving", true);
+        }
         else if (context.canceled)
+        {
             moveInput.x = 0;
+            // anim.SetBool("IsMoving", false);
+        }
+
     }
 
     public void Jump(InputAction.CallbackContext context)

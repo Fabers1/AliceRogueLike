@@ -15,6 +15,8 @@ public class PlayerStats : MonoBehaviour
     public float insanityDelay = 10f;
     public bool insanityActive = false;
 
+    // Animator anim;
+
     public int xp;
     public int xpThreshold;
     public int level = 1;
@@ -28,6 +30,8 @@ public class PlayerStats : MonoBehaviour
         curHealth = curMaxHealth;
 
         originalScale = transform.localScale;
+
+        //anim = GetComponent<Animator>();
     }
 
     public void RecoverHealth(int health)
@@ -145,6 +149,7 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("Game Over!");
 
+       // anim.SetBool("IsDead", true);
         // Colocar o fim do jogo
     }
 

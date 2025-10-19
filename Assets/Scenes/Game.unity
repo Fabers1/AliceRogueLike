@@ -2383,6 +2383,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.0078433
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.0078433
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270544966853705418, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: jumpForce
       value: 10
@@ -2821,7 +2853,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.95
+  m_fontSize: 19
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
