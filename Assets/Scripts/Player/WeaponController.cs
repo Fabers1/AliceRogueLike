@@ -17,6 +17,9 @@ public class WeaponController : MonoBehaviour
                 player.LevelUp();
             }
 
+            if(!player.insanityActive)
+                player.IncreaseInsanity();
+
             collision.GetComponent<Enemy>().Death();
         }
     }

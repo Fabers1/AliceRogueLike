@@ -563,5 +563,5 @@ MonoBehaviour:
   maxInsanity: 50
   insanityDelay: 10
   xp: 0
-  xpThreshold: 0
+  xpThreshold: 1000
   level: 1

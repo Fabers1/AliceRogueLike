@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     public int maxInsanity = 50;
     int curInsanity;
     public float insanityDelay = 10f;
+    public bool insanityActive = false;
 
     public int xp;
     public int xpThreshold;
@@ -80,6 +81,8 @@ public class PlayerStats : MonoBehaviour
     {
         int randomEffect = UnityEngine.Random.Range(0, 2);
 
+        insanityActive = true;
+
         if (randomEffect == 0)
         {
             Vector3 currentScale = transform.localScale;
@@ -122,6 +125,8 @@ public class PlayerStats : MonoBehaviour
 
         transform.localScale = originalScale;
         curMaxHealth = originalMaxHealth;
+
+        insanityActive = false;
 
         if(curHealth > curMaxHealth)
         {
