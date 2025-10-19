@@ -21,6 +21,8 @@ public class WeaponController : MonoBehaviour
                 player.IncreaseInsanity();
 
             collision.GetComponent<Enemy>().Death();
+
+
         }
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager instance;
+
     [SerializeField] List<EnemyPool> enemyPools = new List<EnemyPool>();
 
     [SerializeField] StageConfiguration currentStage;
@@ -13,7 +15,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] bool showDebugInfo = true;
 
     public UnityEngine.Events.UnityEvent OnStageCompleted;
-    public UnityEngine.Events.UnityEvent<int, int> OnEnemyCountChanged;
+    public event System.Action<int, int> OnEnemyCountChanged;
 
     Dictionary<EnemyData, EnemyPool> poolLookup;
     List<Enemy> activeEnemies = new List<Enemy>();
@@ -24,6 +26,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         InitializePoolLookup();
     }
 

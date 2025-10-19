@@ -10,7 +10,8 @@ public class PlayerStats : MonoBehaviour
     public int curHealth;
 
     public int maxInsanity = 50;
-    int curInsanity;
+    [HideInInspector]
+    public int curInsanity;
     public float insanityDelay = 10f;
     public bool insanityActive = false;
 
@@ -38,7 +39,7 @@ public class PlayerStats : MonoBehaviour
             curHealth = curMaxHealth;
         }
 
-        OnHealthChanged?.Invoke(curHealth, curMaxHealth);
+        OnHealthChanged?.Invoke(curHealth);
     }
 
     public void TakeDamage(int damage)
@@ -54,7 +55,7 @@ public class PlayerStats : MonoBehaviour
             Death();
         }
 
-        OnHealthChanged?.Invoke(curHealth, curMaxHealth);
+        OnHealthChanged?.Invoke(curHealth);
     }
 
     public void LevelUp()
@@ -75,6 +76,8 @@ public class PlayerStats : MonoBehaviour
         {
             StartCoroutine(InsanityOn());
         }
+
+        OnInsanityChanged?.Invoke(curInsanity);
     }
 
     IEnumerator InsanityOn()
@@ -126,6 +129,8 @@ public class PlayerStats : MonoBehaviour
         transform.localScale = originalScale;
         curMaxHealth = originalMaxHealth;
 
+        curInsanity = 0;
+
         insanityActive = false;
 
         if(curHealth > curMaxHealth)
@@ -143,5 +148,6 @@ public class PlayerStats : MonoBehaviour
         // Colocar o fim do jogo
     }
 
-    public event System.Action<int, int> OnHealthChanged;
+    public event System.Action<int> OnHealthChanged;
+    public event System.Action<int> OnInsanityChanged;
 }

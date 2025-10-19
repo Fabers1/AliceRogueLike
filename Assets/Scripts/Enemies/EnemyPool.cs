@@ -17,12 +17,6 @@ public class EnemyPool : MonoBehaviour
         InitializePool();
     }
 
-    public void BtnTest()
-    {
-        SpawnEnemy(new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2.5f)));
-        Debug.Log($"Active enemies: {GetActiveEnemyCount()}");
-    }
-
     public EnemyData GetEnemyData()
     {
         return enemyData;
