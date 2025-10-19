@@ -37,6 +37,19 @@ public class StageConfiguration : ScriptableObject
 
     public float speedMultiplier = 1f;
 
+    [Header("Boss Settings - NEW")]
+    [Tooltip("Does this stage have a boss?")]
+    public bool hasBoss = false;
+
+    [Tooltip("Boss to spawn at end of stage")]
+    public BossData bossData;
+
+    [Tooltip("Spawn position for boss")]
+    public Vector2 bossSpawnPosition = new Vector2(0, 5);
+
+    [Tooltip("Should normal enemies stop spawning when boss appears?")]
+    public bool stopEnemiesForBoss = true;
+
     public EnemyData GetRandomEnemyType()
     {
         if (enemyTypes.Count == 0) return null;

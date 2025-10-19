@@ -22,5 +22,9 @@ public class WeaponController : MonoBehaviour
 
             collision.GetComponent<Enemy>().Death();
         }
+        else if (collision.gameObject.CompareTag("Boss"))
+        {
+            collision.gameObject.GetComponent<Boss>().TakeDamage(1);
+        }
     }
 }

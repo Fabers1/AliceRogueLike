@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageName: Level 1
   stageNumber: 1
-  totalEnemyCount: 60
+  totalEnemyCount: 10
   maxSimultaneousEnemies: 10
   enemyTypes:
   - enemyType: {fileID: 11400000, guid: 987df8c0adc562d47956ee0041334821, type: 2}
@@ -40,3 +40,7 @@ MonoBehaviour:
   waitForCompletion: 1
   healthMultiplier: 1
   speedMultiplier: 1
+  hasBoss: 1
+  bossData: {fileID: 11400000, guid: 80a16550a5ea9fb439d9d258c6417778, type: 2}
+  bossSpawnPosition: {x: 0, y: 4.1}
+  stopEnemiesForBoss: 1

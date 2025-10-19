@@ -24,6 +24,8 @@ public class SpawnManager : MonoBehaviour
     bool stageActive = false;
     Coroutine spawnCoroutine;
 
+    private Boss currentBoss = null;
+
     private void Awake()
     {
         instance = this;
@@ -146,18 +148,66 @@ public class SpawnManager : MonoBehaviour
     {
         if (!stageActive) return;
 
-        stageActive = false;
+        if(currentStage.hasBoss && currentBoss == null)
+        {
+            SpawnBoss();
+        }
+        else
+        {
+            stageActive = false;
 
-        Debug.Log($"Stage Complete: {currentStage.stageName}");
+            Debug.Log($"Stage Complete: {currentStage.stageName}");
 
-        // Stop spawning coroutine if still running
-        if (spawnCoroutine != null)
+            // Stop spawning coroutine if still running
+            if (spawnCoroutine != null)
+            {
+                StopCoroutine(spawnCoroutine);
+                spawnCoroutine = null;
+            }
+
+            // Invoke completion event
+            OnStageCompleted?.Invoke();
+        }
+    }
+
+    private void SpawnBoss()
+    {
+        Debug.Log("All enemies defeated! Spawning boss...");
+
+        if(currentStage.stopEnemiesForBoss && spawnCoroutine != null)
         {
             StopCoroutine(spawnCoroutine);
             spawnCoroutine = null;
         }
 
-        // Invoke completion event
+        GameObject bossObj = Instantiate(
+            currentStage.bossData.bossPrefab,
+            currentStage.bossSpawnPosition,
+            Quaternion.identity
+        );
+
+        currentBoss = bossObj.GetComponent<Boss>();
+        if (currentBoss != null) 
+        {
+            currentBoss.Initialize(currentStage.bossData);
+            currentBoss.OnBossDeath += HandleBossDeath;
+
+            Debug.Log($"Boss spawned: {currentStage.bossData.bossName}");
+        }
+        else
+        {
+            Debug.LogError("Boss prefab missing Boss component");
+        }
+    }
+
+    void HandleBossDeath(Boss boss)
+    {
+        Debug.Log("Boss defeated! Stage complete!");
+
+        boss.OnBossDeath -= HandleBossDeath;
+        currentBoss = null;
+
+        stageActive = false;
         OnStageCompleted?.Invoke();
     }
 
@@ -177,6 +227,13 @@ public class SpawnManager : MonoBehaviour
         {
             enemy.OnDeath -= HandleEnemyDeath;
             enemy.ReturnToPool();
+        }
+
+        if(currentBoss != null)
+        {
+            currentBoss.OnBossDeath -= HandleBossDeath;
+            Destroy(currentBoss.gameObject);
+            currentBoss = null;
         }
 
         activeEnemies.Clear();
