@@ -1,0 +1,1017 @@
+fileFormatVersion: 2
+guid: e53fa1355da77844f9ce1a78952cded3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3034016382980999523
+    second: carta inimigo v5-Sheet (1)_0
+  - first:
+      213: -1429671201162793688
+    second: carta inimigo v5-Sheet (1)_1
+  - first:
+      213: -8597941089549170675
+    second: carta inimigo v5-Sheet (1)_2
+  - first:
+      213: 6471610916537304090
+    second: carta inimigo v5-Sheet (1)_3
+  - first:
+      213: -4303822142410674989
+    second: carta inimigo v5-Sheet (1)_4
+  - first:
+      213: -6851302667823323648
+    second: carta inimigo v5-Sheet (1)_5
+  - first:
+      213: 1258793466415970596
+    second: carta inimigo v5-Sheet (1)_6
+  - first:
+      213: 4891318722769247952
+    second: carta inimigo v5-Sheet (1)_7
+  - first:
+      213: 1740013094773275833
+    second: carta inimigo v5-Sheet (1)_8
+  - first:
+      213: 9013475804909791833
+    second: carta inimigo v5-Sheet (1)_9
+  - first:
+      213: 1023898561809854874
+    second: carta inimigo v5-Sheet (1)_10
+  - first:
+      213: -7262728291513518433
+    second: carta inimigo v5-Sheet (1)_11
+  - first:
+      213: -99961071461281825
+    second: carta inimigo v5-Sheet (1)_12
+  - first:
+      213: -7667089980053736144
+    second: carta inimigo v5-Sheet (1)_13
+  - first:
+      213: 2064837206906905818
+    second: carta inimigo v5-Sheet (1)_14
+  - first:
+      213: 7028151170959166392
+    second: carta inimigo v5-Sheet (1)_15
+  - first:
+      213: -1559365242919422382
+    second: carta inimigo v5-Sheet (1)_16
+  - first:
+      213: 458793233189329500
+    second: carta inimigo v5-Sheet (1)_17
+  - first:
+      213: -7841071480733139993
+    second: carta inimigo v5-Sheet (1)_18
+  - first:
+      213: 4466331204159664131
+    second: carta inimigo v5-Sheet (1)_19
+  - first:
+      213: -7698287329250525374
+    second: carta inimigo v5-Sheet (1)_20
+  - first:
+      213: -8629171398450491190
+    second: carta inimigo v5-Sheet (1)_21
+  - first:
+      213: -4212260238726924000
+    second: carta inimigo v5-Sheet (1)_22
+  - first:
+      213: -1421932007643688452
+    second: carta inimigo v5-Sheet (1)_23
+  - first:
+      213: -5482391059337647224
+    second: carta inimigo v5-Sheet (1)_24
+  - first:
+      213: 7561150755281249009
+    second: carta inimigo v5-Sheet (1)_25
+  - first:
+      213: 8203204771221325049
+    second: carta inimigo v5-Sheet (1)_26
+  - first:
+      213: 361227088039997944
+    second: carta inimigo v5-Sheet (1)_27
+  - first:
+      213: -4194810490617851173
+    second: carta inimigo v5-Sheet (1)_28
+  - first:
+      213: 5928808243845640877
+    second: carta inimigo v5-Sheet (1)_29
+  - first:
+      213: -3457672820213719228
+    second: carta inimigo v5-Sheet (1)_30
+  - first:
+      213: -6213507195610481241
+    second: carta inimigo v5-Sheet (1)_31
+  - first:
+      213: 2782641666952570870
+    second: carta inimigo v5-Sheet (1)_32
+  - first:
+      213: 1218924328548964361
+    second: carta inimigo v5-Sheet (1)_33
+  - first:
+      213: -7441988116368455797
+    second: carta inimigo v5-Sheet (1)_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3694c4e43ddfa1a20800000000000000
+      internalID: 3034016382980999523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82de5150e99c82ce0800000000000000
+      internalID: -1429671201162793688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d08cfa5022afda880800000000000000
+      internalID: -8597941089549170675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a140fbc27d7cfc950800000000000000
+      internalID: 6471610916537304090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dca6296090c544c0800000000000000
+      internalID: -4303822142410674989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00664bbf5884be0a0800000000000000
+      internalID: -6851302667823323648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4297e430df1287110800000000000000
+      internalID: 1258793466415970596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ded0e9867471e340800000000000000
+      internalID: 4891318722769247952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bc3d72d0b4c52810800000000000000
+      internalID: 1740013094773275833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_9
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95ae9373d7c461d70800000000000000
+      internalID: 9013475804909791833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_10
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a91b5be215e953e00800000000000000
+      internalID: 1023898561809854874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_11
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f963824391b953b90800000000000000
+      internalID: -7262728291513518433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_12
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdfce246feddc9ef0800000000000000
+      internalID: -99961071461281825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_13
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035b0fdf846099590800000000000000
+      internalID: -7667089980053736144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_14
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad422bcef76c7ac10800000000000000
+      internalID: 2064837206906905818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_15
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bb44c4d042098160800000000000000
+      internalID: 7028151170959166392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25672bcc2950c5ae0800000000000000
+      internalID: -1559365242919422382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a5a99c306fd5600800000000000000
+      internalID: 458793233189329500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_18
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eb7474380bee2390800000000000000
+      internalID: -7841071480733139993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_19
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300fd2901989bfd30800000000000000
+      internalID: 4466331204159664131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_20
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24fb12916703a2590800000000000000
+      internalID: -7698287329250525374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_21
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac0d56915560f3880800000000000000
+      internalID: -8629171398450491190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_22
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 029fd2161ab0b85c0800000000000000
+      internalID: -4212260238726924000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_23
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf1d3ad6f58444ce0800000000000000
+      internalID: -1421932007643688452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_24
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88be664e062aae3b0800000000000000
+      internalID: -5482391059337647224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_25
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f227bd1d8a9ee860800000000000000
+      internalID: 7561150755281249009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_26
+      rect:
+        serializedVersion: 2
+        x: 2496
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f4cf68e643a7d170800000000000000
+      internalID: 8203204771221325049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_27
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f17fd96f16530500800000000000000
+      internalID: 361227088039997944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_28
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd214a6751a09c5c0800000000000000
+      internalID: -4194810490617851173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_29
+      rect:
+        serializedVersion: 2
+        x: 2784
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2b3d38fab574250800000000000000
+      internalID: 5928808243845640877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_30
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f53a9b3e0e300d0800000000000000
+      internalID: -3457672820213719228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_31
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7adbd4c402035c9a0800000000000000
+      internalID: -6213507195610481241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_32
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f7a8ef5added9620800000000000000
+      internalID: 2782641666952570870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carta inimigo v5-Sheet (1)_33
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9081e3bf73d7ae010800000000000000
+      internalID: 1218924328548964361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9a75d8ab4fcdbb34cb2f8ded299bba5d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      carta inimigo v5-Sheet (1)_0: 3034016382980999523
+      carta inimigo v5-Sheet (1)_1: -1429671201162793688
+      carta inimigo v5-Sheet (1)_10: 1023898561809854874
+      carta inimigo v5-Sheet (1)_11: -7262728291513518433
+      carta inimigo v5-Sheet (1)_12: -99961071461281825
+      carta inimigo v5-Sheet (1)_13: -7667089980053736144
+      carta inimigo v5-Sheet (1)_14: 2064837206906905818
+      carta inimigo v5-Sheet (1)_15: 7028151170959166392
+      carta inimigo v5-Sheet (1)_16: -1559365242919422382
+      carta inimigo v5-Sheet (1)_17: 458793233189329500
+      carta inimigo v5-Sheet (1)_18: -7841071480733139993
+      carta inimigo v5-Sheet (1)_19: 4466331204159664131
+      carta inimigo v5-Sheet (1)_2: -8597941089549170675
+      carta inimigo v5-Sheet (1)_20: -7698287329250525374
+      carta inimigo v5-Sheet (1)_21: -8629171398450491190
+      carta inimigo v5-Sheet (1)_22: -4212260238726924000
+      carta inimigo v5-Sheet (1)_23: -1421932007643688452
+      carta inimigo v5-Sheet (1)_24: -5482391059337647224
+      carta inimigo v5-Sheet (1)_25: 7561150755281249009
+      carta inimigo v5-Sheet (1)_26: 8203204771221325049
+      carta inimigo v5-Sheet (1)_27: 361227088039997944
+      carta inimigo v5-Sheet (1)_28: -4194810490617851173
+      carta inimigo v5-Sheet (1)_29: 5928808243845640877
+      carta inimigo v5-Sheet (1)_3: 6471610916537304090
+      carta inimigo v5-Sheet (1)_30: -3457672820213719228
+      carta inimigo v5-Sheet (1)_31: -6213507195610481241
+      carta inimigo v5-Sheet (1)_32: 2782641666952570870
+      carta inimigo v5-Sheet (1)_33: 1218924328548964361
+      carta inimigo v5-Sheet (1)_4: -4303822142410674989
+      carta inimigo v5-Sheet (1)_5: -6851302667823323648
+      carta inimigo v5-Sheet (1)_6: 1258793466415970596
+      carta inimigo v5-Sheet (1)_7: 4891318722769247952
+      carta inimigo v5-Sheet (1)_8: 1740013094773275833
+      carta inimigo v5-Sheet (1)_9: 9013475804909791833
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
