@@ -140,8 +140,10 @@ public class Boss : MonoBehaviour
             return;
         }
 
+        isInvulnerable = true;
+
         // Target: directly above player, 3 units up
-        Vector2 targetPosition = new Vector2(player.position.x, player.position.y + 3f);
+        Vector2 targetPosition = new Vector2(player.position.x, player.position.y + 2.5f);
         Vector2 currentPosition = transform.position;
 
         // Calculate direction to target
@@ -256,6 +258,10 @@ public class Boss : MonoBehaviour
         curHealth = Mathf.Max(0, curHealth);
 
         Debug.Log($"Boss took {damage} damage! Health: {curHealth}/{data.maxHealth}");
+
+        EnterState(BossState.Invulnerable);
+
+        isInvulnerable = true;
 
         OnBossHealthChanged?.Invoke(this, curHealth);
 

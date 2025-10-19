@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public float modifiedSpeed;
     GameObject currentPlatform;
+    public GameObject lastPlatform;
     bool facingRight = true;
 
     public PlayerStats stats;
@@ -133,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector2.up * jumpForce;
     }
 
-    void DropDownPlatform()
+    public void DropDownPlatform()
     {
         if (currentPlatform == null) return;
 
@@ -165,7 +166,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.collider.CompareTag("Platform"))
         {
+            if (lastPlatform != null) 
+            { 
+                Physics2D.IgnoreCollision(
+                    lastPlatform.GetComponent<Collider2D>(),
+                    GetComponent<Collider2D>(),
+                    false
+                );
+            }
+
             currentPlatform = collision.collider.gameObject;
+            lastPlatform = currentPlatform;
         }
     }
 

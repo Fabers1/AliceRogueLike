@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: QoH
   m_EditorClassIdentifier: 
   bossName: Queen of Hearts
-  maxHealth: 20
+  maxHealth: 5
   moveSpeed: 0.8
   startsInvulnerable: 1
   invulnerableTime: 5

@@ -1622,7 +1622,7 @@ Transform:
   m_GameObject: {fileID: 730634669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: 7.24, z: 0}
+  m_LocalPosition: {x: -1.81, y: 7.73, z: 0}
   m_LocalScale: {x: 20, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2457,6 +2457,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6614828801775645711, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: movement
+      value: 
+      objectReference: {fileID: 2090297070}
     - target: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: stats
       value: 
@@ -3540,6 +3544,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4115124}
+--- !u!114 &2090297070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+  m_PrefabInstance: {fileID: 1428142153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390512911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f46f3736e8f23c43968f4c4e666b382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2094906700
 GameObject:
   m_ObjectHideFlags: 0
