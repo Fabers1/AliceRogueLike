@@ -59,7 +59,17 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);
+            PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
+            
+            if (playerStats.isInvincible || playerStats.isDead)
+            {
+                Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+                return;
+            }
+
+            playerStats.TakeDamage(1);
+
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {

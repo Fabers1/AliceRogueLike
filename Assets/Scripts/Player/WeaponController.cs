@@ -6,7 +6,7 @@ public class WeaponController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && !player.isInvincible && !player.isDead)
         {
             Debug.Log("Enemy hit!");
 
@@ -21,8 +21,6 @@ public class WeaponController : MonoBehaviour
                 player.IncreaseInsanity();
 
             collision.GetComponent<Enemy>().Death();
-
-
         }
     }
 }

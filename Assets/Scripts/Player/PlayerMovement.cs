@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
 
     Rigidbody2D rb;
-    //Animator anim;
 
     [SerializeField] Transform bottomPos;
     [SerializeField] LayerMask floorLayer;
@@ -28,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public float modifiedSpeed;
     GameObject currentPlatform;
     bool facingRight = true;
+
+    public PlayerStats stats;
+
+    public PlayerAnimation animator;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,55 +41,49 @@ public class PlayerMovement : MonoBehaviour
         jumpAction = InputSystem.actions.FindAction("Jump");
 
         modifiedSpeed = originalSpeed;
-
-        //anim = GetComponent<Animator>();
     }
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (stats.isDead) return;
+           
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void MoveLeft(InputAction.CallbackContext context)
     {
+        if(stats.isDead) return;
 
         if (context.started)
         {
             moveInput.x = -1;
-           // anim.SetBool("IsMoving", true);
         }
 
         else if (context.canceled)
         {
-            
             moveInput.x = 0;
-            //anim.SetBool("IsMoving", false);
         }
-
-
-
-
-
     }
 
     public void MoveRight(InputAction.CallbackContext context)
     {
+        if (stats.isDead) return;
 
         if (context.started)
         {
             moveInput.x = 1;
-           // anim.SetBool("IsMoving", true);
         }
         else if (context.canceled)
         {
             moveInput.x = 0;
-            // anim.SetBool("IsMoving", false);
         }
 
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (stats.isDead) return;
+
         if (context.started && OnGround())
         {
             Jump();
@@ -95,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dropdown(InputAction.CallbackContext context)
     {
+        if (stats.isDead) return;
+
         if (context.started && OnGround())
         {
             DropDownPlatform();
@@ -104,6 +103,15 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocityX = moveInput.x * modifiedSpeed;
+
+        if (rb.linearVelocityX != 0)
+        {
+            animator.anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.anim.SetBool("IsMoving", false);
+        }
 
         if ((moveInput.x > 0 && !facingRight) || (moveInput.x < 0 && facingRight)) 
         {

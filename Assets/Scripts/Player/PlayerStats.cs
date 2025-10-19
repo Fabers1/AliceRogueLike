@@ -15,13 +15,20 @@ public class PlayerStats : MonoBehaviour
     public float insanityDelay = 10f;
     public bool insanityActive = false;
 
-    // Animator anim;
+    [Header("Invincibility Settings")]
+    public float invincibilityDuration = 1.5f;
+    [HideInInspector]
+    public bool isInvincible = false;
 
     public int xp;
     public int xpThreshold;
     public int level = 1;
 
     Vector3 originalScale;
+
+    public PlayerAnimation animations;
+
+    public bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -30,8 +37,6 @@ public class PlayerStats : MonoBehaviour
         curHealth = curMaxHealth;
 
         originalScale = transform.localScale;
-
-        //anim = GetComponent<Animator>();
     }
 
     public void RecoverHealth(int health)
@@ -48,18 +53,51 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead || isInvincible) return;
+
         curHealth -= damage;
+        animations.anim.SetTrigger("IsHurt");
 
-        // Colocar lógica de invulnerabilidade
-
-        Debug.Log("Hurt");
+        StartCoroutine(InvincibilityWindow());
 
         if (curHealth <= 0)
         {
+            curHealth = 0;
+
             Death();
         }
 
         OnHealthChanged?.Invoke(curHealth);
+    }
+
+    IEnumerator InvincibilityWindow()
+    {
+        isInvincible = true;
+
+        // Optional: Add visual feedback (flashing effect)
+        StartCoroutine(FlashPlayer());
+
+        yield return new WaitForSeconds(invincibilityDuration);
+
+        isInvincible = false;
+    }
+
+    IEnumerator FlashPlayer()
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        if (sprite == null) yield break;
+
+        float flashInterval = 0.1f;
+        float elapsed = 0f;
+
+        while (elapsed < invincibilityDuration)
+        {
+            sprite.enabled = !sprite.enabled;
+            yield return new WaitForSeconds(flashInterval);
+            elapsed += flashInterval;
+        }
+
+        sprite.enabled = true;
     }
 
     public void LevelUp()
@@ -70,6 +108,8 @@ public class PlayerStats : MonoBehaviour
         curMaxHealth += level;
         originalMaxHealth += level;
         curHealth += level;
+
+        OnHealthChanged?.Invoke(curHealth);
     }
 
     public void IncreaseInsanity()
@@ -149,7 +189,10 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("Game Over!");
 
-       // anim.SetBool("IsDead", true);
+        isDead = true;
+
+        animations.anim.SetTrigger("dead");
+        animations.anim.SetBool("IsDead", true);
         // Colocar o fim do jogo
     }
 
