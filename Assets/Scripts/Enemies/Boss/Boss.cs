@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Boss : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Boss : MonoBehaviour
     BossState currentState = BossState.Idle;
     SpriteRenderer sr;
     Rigidbody2D rb;
+    Animator anim;
 
     int curHealth;
     bool isInvulnerable = true;
@@ -27,14 +29,19 @@ public class Boss : MonoBehaviour
     float nextBurstTime = 0f;
     bool isShooting = false;
 
+    public float flipThreshold = 0.5f;
+
     public System.Action<Boss> OnBossDeath;
     public System.Action<Boss, int> OnBossHealthChanged;
     public System.Action<Boss, BossState> OnBossStateChanged;
+
+    bool facingRight = true;
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if(playerObj != null)
@@ -58,13 +65,63 @@ public class Boss : MonoBehaviour
             sr.color = isInvulnerable ? data.invulnerableColor : data.vulnerableColor;
         }
 
+        InitializeAnimator();
+
         ChangeState(BossState.Moving);
+    }
+
+    // <summary>
+    /// Sets up initial animation parameters.
+    /// Call this once when boss spawns.
+    /// </summary>
+    private void InitializeAnimator()
+    {
+        if (anim == null) return;
+
+        // Set initial animation values
+        SetAnimatorBool("IsMoving", false);
+    }
+
+    /// <summary>
+    /// Safe method to set bool parameter (checks if parameter exists).
+    /// </summary>
+    private void SetAnimatorBool(string paramName, bool value)
+    {
+        if (anim == null) return;
+
+        try
+        {
+            anim.SetBool(paramName, value);
+        }
+        catch (System.Exception)
+        {
+            // Parameter doesn't exist - that's okay
+        }
+    }
+
+    /// <summary>
+    /// Safe method to trigger one-shot animation.
+    /// </summary>
+    private void SetAnimatorTrigger(string paramName)
+    {
+        if (anim == null) return;
+
+        try
+        {
+            anim.SetTrigger(paramName);
+        }
+        catch (System.Exception)
+        {
+            // Parameter doesn't exist - that's okay
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         stateTimer += Time.deltaTime;
+
+        UpdateFacing();
 
         switch (currentState)
         {
@@ -104,20 +161,34 @@ public class Boss : MonoBehaviour
     {
         switch (state)
         {
+            case BossState.Idle:
+                SetAnimatorBool("IsMoving", false);
+                break;
+
+            case BossState.Moving:
+                SetAnimatorBool("IsMoving", true);
+                break;
             case BossState.Invulnerable:
                 isInvulnerable = true;
                 sr.color = data.invulnerableColor;
                 nextBurstTime = Time.time + 0.5f; // Start shooting soon
+
+                // Animation updates
+                SetAnimatorTrigger("Invulnerable");
                 break;
 
             case BossState.Vulnerable:
                 isInvulnerable = false;
                 sr.color = data.vulnerableColor;
                 StopAllCoroutines(); // Stop any shooting
+
+                SetAnimatorTrigger("Laugh"); // Ecstasy animation!
                 break;
 
             case BossState.Dying:
                 StopAllCoroutines();
+
+                SetAnimatorTrigger("Death");
                 break;
         }
     }
@@ -128,6 +199,8 @@ public class Boss : MonoBehaviour
         {
             case BossState.Moving:
                 rb.linearVelocity = Vector2.zero;
+
+                SetAnimatorBool("IsMoving", false);
                 break;
         }
     }
@@ -191,7 +264,9 @@ public class Boss : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
 
-        if(stateTimer >= data.vulnerableTime)
+        SetAnimatorTrigger("Laugh");
+
+        if (stateTimer >= data.vulnerableTime)
         {
             ChangeState(BossState.Invulnerable);
         }
@@ -214,6 +289,8 @@ public class Boss : MonoBehaviour
 
         for (int i = 0; i < data.projectilesPerBurst; i++)
         {
+            SetAnimatorTrigger("Attack");
+
             ShootProjectile();
 
             yield return new WaitForSeconds(data.timeBetweenProjectiles);
@@ -257,6 +334,8 @@ public class Boss : MonoBehaviour
         curHealth -= damage;
         curHealth = Mathf.Max(0, curHealth);
 
+        SetAnimatorTrigger("Hurt");
+
         Debug.Log($"Boss took {damage} damage! Health: {curHealth}/{data.maxHealth}");
 
         EnterState(BossState.Invulnerable);
@@ -276,6 +355,36 @@ public class Boss : MonoBehaviour
         Debug.Log("Boss defeates!");
 
         ChangeState(BossState.Dying);
+    }
+
+    void Flip()
+    {
+        Vector3 currentScale = transform.localScale;
+        currentScale.x *= -1;
+        transform.localScale = currentScale;
+        facingRight = !facingRight;
+    }
+
+    private void UpdateFacing()
+    {
+        if (player == null) return;
+
+        // Calculate horizontal distance to player
+        float directionToPlayer = player.position.x - transform.position.x;
+
+        // Check if player is far enough to warrant a flip (prevents jittering)
+        if (Mathf.Abs(directionToPlayer) < flipThreshold) return;
+
+        // Player is to the right and boss is facing left
+        if (directionToPlayer > 0 && !facingRight)
+        {
+            Flip();
+        }
+        // Player is to the left and boss is facing right
+        else if (directionToPlayer < 0 && facingRight)
+        {
+            Flip();
+        }
     }
 
     public bool IsInvulnerable() => isInvulnerable;

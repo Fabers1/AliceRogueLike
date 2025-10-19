@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -6,7 +7,11 @@ public class Enemy : MonoBehaviour
     public float speed = 4f;
     Rigidbody2D rb;
 
+    public Animator anim;
+
     EnemyPool ownerPool;
+
+    bool dead;
 
     public System.Action<Enemy> OnDeath;
 
@@ -28,12 +33,32 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (dead)
+        {
+            rb.linearVelocityX = 0;
+
+            return;
+        }
+
         rb.linearVelocityX = speed;
     }
 
     public void Death()
     {
         OnDeath?.Invoke(this);
+
+        StartCoroutine(Dead());
+    }
+
+    IEnumerator Dead()
+    {
+        anim.SetTrigger("Death");
+
+        dead = true;
+
+        yield return new WaitForSeconds(0.9f);
+
+        dead = false;
 
         ReturnToPool();
     }
@@ -57,7 +82,7 @@ public class Enemy : MonoBehaviour
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !dead)
         {
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             

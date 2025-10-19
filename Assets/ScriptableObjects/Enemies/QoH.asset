@@ -22,7 +22,7 @@ MonoBehaviour:
   projectilesPerBurst: 5
   timeBetweenProjectiles: 0.3
   timeBetweenBursts: 3
-  projectileSpeed: 5
+  projectileSpeed: 8
   bossPrefab: {fileID: 501373951242573106, guid: 21da6bc988376354f861cc29a507f606, type: 3}
   invulnerableColor: {r: 1, g: 0.5, b: 0.5, a: 1}
   vulnerableColor: {r: 1, g: 1, b: 1, a: 1}
