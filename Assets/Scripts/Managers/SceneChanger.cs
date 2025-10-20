@@ -2,9 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+
 
 public class SceneChanger : MonoBehaviour
 {
@@ -15,11 +13,7 @@ public class SceneChanger : MonoBehaviour
     public float delayBeforeLoad = 0.2f;
 
     [Header("Scene to Load")]
-#if UNITY_EDITOR
-    [SerializeField] private SceneAsset sceneToLoad;
-#else
     [SerializeField] private string sceneName;
-#endif
 
     public void ChangeScene()
     {
@@ -29,11 +23,7 @@ public class SceneChanger : MonoBehaviour
 
     private string GetSceneName()
     {
-#if UNITY_EDITOR
-        return sceneToLoad != null ? sceneToLoad.name : string.Empty;
-#else
-        return sceneName;
-#endif
+    return sceneName;
     }
 
     public IEnumerator ChangeSceneRoutine(string sceneName)
