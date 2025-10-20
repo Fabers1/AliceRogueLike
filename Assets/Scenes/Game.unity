@@ -237,6 +237,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &22275335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22275337}
+  - component: {fileID: 22275336}
+  m_Layer: 0
+  m_Name: ManagerWinAndDef
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &22275336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22275335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f57bab3dd905f4f84032f3fa7c2f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  painelVitoria: {fileID: 338585289}
+  painelDerrota: {fileID: 1796589145}
+  nomeCenaMenu: Menu
+--- !u!4 &22275337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22275335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1078.5905, y: 494.93, z: -16.025002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &57192119
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +714,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 102119357}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 22275336}
+        m_TargetAssemblyTypeName: VictoryDefeatManager, Assembly-CSharp
+        m_MethodName: RejogarFase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &102119357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,7 +1560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
   m_AnchorMin: {x: 0.31006974, y: 0.47812992}
   m_AnchorMax: {x: 0.42821082, y: 0.74577403}
-  m_AnchoredPosition: {x: -0.00006866455, y: 0.000045776367}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0.000045776367}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &632998471
@@ -1973,7 +2032,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 679480585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 22275336}
+        m_TargetAssemblyTypeName: VictoryDefeatManager, Assembly-CSharp
+        m_MethodName: VoltarParaMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &679480585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2094,7 +2165,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 688208849}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 22275336}
+        m_TargetAssemblyTypeName: VictoryDefeatManager, Assembly-CSharp
+        m_MethodName: VoltarParaMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &688208849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3785,6 +3868,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1723468976269751225, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2214887734095844229, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: m_Size.x
       value: 0.51887447
@@ -3943,7 +4030,7 @@ PrefabInstance:
       objectReference: {fileID: 2090297071}
     - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: curMaxHealth
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: gameOverScreen
@@ -4471,7 +4558,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.95
+  m_fontSize: 18.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4694,7 +4781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1796589146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5488,3 +5575,4 @@ SceneRoots:
   - {fileID: 415621837}
   - {fileID: 1734765924}
   - {fileID: 1078686742}
+  - {fileID: 22275337}

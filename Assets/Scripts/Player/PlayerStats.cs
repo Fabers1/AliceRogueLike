@@ -49,7 +49,7 @@ public class PlayerStats : MonoBehaviour
     {
         curHealth += health;
 
-        if(curHealth > curMaxHealth)
+        if (curHealth > curMaxHealth)
         {
             curHealth = curMaxHealth;
         }
@@ -124,7 +124,7 @@ public class PlayerStats : MonoBehaviour
     {
         curInsanity += 2;
 
-        if(curInsanity >= maxInsanity)
+        if (curInsanity >= maxInsanity)
         {
             StartCoroutine(InsanityOn());
         }
@@ -154,7 +154,7 @@ public class PlayerStats : MonoBehaviour
 
             Debug.Log("Garrafa Misteriosa");
         }
-        else if (randomEffect == 1) 
+        else if (randomEffect == 1)
         {
             Vector3 currentScale = transform.localScale;
             currentScale *= 2;
@@ -169,7 +169,7 @@ public class PlayerStats : MonoBehaviour
                 curHealth = curMaxHealth;
             }
 
-            GetComponent<PlayerMovement>().modifiedSpeed /=  2;
+            GetComponent<PlayerMovement>().modifiedSpeed /= 2;
 
             Debug.Log("Bolo Misterioso");
         }
@@ -185,7 +185,7 @@ public class PlayerStats : MonoBehaviour
 
         insanityActive = false;
 
-        if(curHealth > curMaxHealth)
+        if (curHealth > curMaxHealth)
         {
             curHealth = curMaxHealth;
         }
@@ -200,6 +200,12 @@ public class PlayerStats : MonoBehaviour
         isDead = true;
 
         gameOverScreen.SetActive(true);
+
+        VictoryDefeatManager vdm = FindObjectOfType<VictoryDefeatManager>();
+        if (vdm != null)
+        {
+            vdm.MostrarDerrota();
+        }
 
         animations.anim.SetTrigger("dead");
 
