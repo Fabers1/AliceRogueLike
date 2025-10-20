@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7603083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -883,7 +883,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 2288727266207074489, guid: 56ff7fd6085fed14b8d12b6760f033de, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2021,12 +2021,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275168371}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.05292, y: 186.24818, z: -12218.303}
-  m_LocalScale: {x: 143.99998, y: 143.99998, z: 143.99998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1766575022}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353830955
 GameObject:
@@ -2054,16 +2054,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1353830955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b0336b592401c9419adf029fa690e74, type: 3}
+  m_Script: {fileID: 11500000, guid: d8030c465348dd34590941bff4d3ab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOverlay: {fileID: 118918235}
-  fadeDuration: 1
+  fadeDuration: 0.5
   firstImage: {fileID: 1913683605}
   secondImage: {fileID: 1486763286}
   painelInicial: {fileID: 14140051}
   painelFinal1: {fileID: 443932953}
-  painelFinal2: {fileID: 7603082}
   avancarButton: {fileID: 1219533566}
   botaoParaDesativar: {fileID: 1219533566}
 --- !u!4 &1353830957
@@ -2441,7 +2440,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -1768552327224267752, guid: 939c38d5eb7881e40a82fe6a4b692139, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2852,7 +2851,6 @@ RectTransform:
   - {fileID: 584345196}
   - {fileID: 118918237}
   - {fileID: 14140052}
-  - {fileID: 1275168373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3052,7 +3050,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -3419718104191475422, guid: 7bc8b134bf38c874282e09bb99ce8610, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3255,3 +3253,4 @@ SceneRoots:
   - {fileID: 538966355}
   - {fileID: 1766575022}
   - {fileID: 1353830957}
+  - {fileID: 1275168373}

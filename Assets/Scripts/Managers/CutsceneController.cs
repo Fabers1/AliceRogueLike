@@ -1,4 +1,4 @@
-Ôªøusing UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -12,32 +12,31 @@ public class CutsceneController : MonoBehaviour
     public Image firstImage;
     public Image secondImage;
 
-    [Header("Pain√©is")]
+    [Header("PainÈis")]
     public GameObject painelInicial;
     public GameObject painelFinal1;
-    public GameObject painelFinal2;
 
-    [Header("Bot√µes")]
+    [Header("Botıes")]
     public Button avancarButton;
     public Button botaoParaDesativar;
 
     private int step = 0;
     private bool canAdvance = false;
-    private CanvasRenderer fadeCanvasRenderer;
+    private CanvasGroup fadeCanvasRenderer;
 
     private void Awake()
     {
         if (fadeOverlay == null)
         {
-            Debug.LogError("fadeOverlay n√£o est√° atribu√≠do!");
+            Debug.LogError("fadeOverlay n„o est· atribuÌdo!");
             return;
         }
 
         // Pega o CanvasRenderer
-        fadeCanvasRenderer = fadeOverlay.GetComponent<CanvasRenderer>();
+        fadeCanvasRenderer = fadeOverlay.GetComponent<CanvasGroup>();
         if (fadeCanvasRenderer != null)
         {
-            fadeCanvasRenderer.cullTransparentMesh = false;
+            Debug.Log("Erro pra ver");
         }
 
         // Verifica se tem sprite
@@ -72,7 +71,7 @@ public class CutsceneController : MonoBehaviour
             fadeCanvas.sortingOrder = 9999;
         }
 
-        // Come√ßa totalmente preto
+        // ComeÁa totalmente preto
         SetFadeAlpha(1f);
 
         Canvas.ForceUpdateCanvases();
@@ -155,7 +154,7 @@ public class CutsceneController : MonoBehaviour
     {
         if (!canAdvance) return;
 
-        Debug.Log("Bot√£o avan√ßar pressionado!");
+        Debug.Log("Bot„o avanÁar pressionado!");
 
         if (avancarButton)
         {
@@ -179,8 +178,9 @@ public class CutsceneController : MonoBehaviour
         secondImage.gameObject.SetActive(false);
 
         if (painelFinal1) painelFinal1.SetActive(true);
-        if (painelFinal2) painelFinal2.SetActive(true);
         if (botaoParaDesativar) botaoParaDesativar.gameObject.SetActive(false);
+
+        fadeOverlay.raycastTarget = false;
 
         yield return StartCoroutine(Fade(1, 0, fadeDuration));
     }
@@ -202,25 +202,27 @@ public class CutsceneController : MonoBehaviour
             yield return null;
         }
 
+        fadeOverlay.raycastTarget = (end > 0.9f);
+
         SetFadeAlpha(end);
 
-        Debug.Log($"Fade conclu√≠do - Alpha final: {fadeOverlay.color.a}");
+        Debug.Log($"Fade concluÌdo - Alpha final: {fadeOverlay.color.a}");
     }
 
-    // M√©todo centralizado para mudar o alpha e for√ßar atualiza√ß√£o
+    // MÈtodo centralizado para mudar o alpha e forÁar atualizaÁ„o
     private void SetFadeAlpha(float alpha)
     {
         Color color = fadeOverlay.color;
         color.a = alpha;
         fadeOverlay.color = color;
 
-        // For√ßa atualiza√ß√£o do CanvasRenderer
+        // ForÁa atualizaÁ„o do CanvasRenderer
         if (fadeCanvasRenderer != null)
         {
-            fadeCanvasRenderer.SetAlpha(alpha);
+            fadeCanvasRenderer.alpha = alpha;
         }
 
-        // Marca como dirty para for√ßar redesenho
+        // Marca como dirty para forÁar redesenho
         fadeOverlay.SetAllDirty();
 
         Debug.Log($"Alpha setado para: {alpha:F3}");
