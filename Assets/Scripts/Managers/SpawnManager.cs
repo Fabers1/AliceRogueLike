@@ -28,6 +28,9 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject winScreen;
 
+    public AudioSource bossMusic;
+    public AudioSource gameMusic;
+
     private void Awake()
     {
         instance = this;
@@ -154,6 +157,9 @@ public class SpawnManager : MonoBehaviour
 
         if(currentStage.hasBoss && currentBoss == null)
         {
+            gameMusic.Pause();
+            bossMusic.Play();
+
             SpawnBoss();
         }
         else

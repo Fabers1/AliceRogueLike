@@ -37,6 +37,10 @@ public class Boss : MonoBehaviour
 
     bool facingRight = true;
 
+    public AudioSource source;
+    public AudioClip death;
+    public AudioClip laugh;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -347,6 +351,8 @@ public class Boss : MonoBehaviour
         if(curHealth <= 0)
         {
             Die();
+
+            source.PlayOneShot(death);
         }
     }
 

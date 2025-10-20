@@ -150,7 +150,7 @@ public class CutsceneController : MonoBehaviour
         canAdvance = true;
     }
 
-    private void OnAdvancePressed()
+    public void OnAdvancePressed()
     {
         if (!canAdvance) return;
 

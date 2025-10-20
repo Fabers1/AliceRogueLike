@@ -201,7 +201,7 @@ public class PlayerStats : MonoBehaviour
 
         gameOverScreen.SetActive(true);
 
-        VictoryDefeatManager vdm = FindObjectOfType<VictoryDefeatManager>();
+        VictoryDefeatManager vdm = FindFirstObjectByType<VictoryDefeatManager>();
         if (vdm != null)
         {
             vdm.MostrarDerrota();
