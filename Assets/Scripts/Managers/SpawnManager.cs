@@ -26,9 +26,13 @@ public class SpawnManager : MonoBehaviour
 
     private Boss currentBoss = null;
 
+    public GameObject winScreen;
+
     private void Awake()
     {
         instance = this;
+
+        winScreen.SetActive(false);
 
         InitializePoolLookup();
     }
@@ -167,6 +171,8 @@ public class SpawnManager : MonoBehaviour
 
             // Invoke completion event
             OnStageCompleted?.Invoke();
+
+            winScreen.SetActive(true);
         }
     }
 
@@ -209,6 +215,8 @@ public class SpawnManager : MonoBehaviour
 
         stageActive = false;
         OnStageCompleted?.Invoke();
+
+        winScreen.SetActive(true);
     }
 
     // Clear all enemies (for transitioning between stages)

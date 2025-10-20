@@ -34,6 +34,8 @@ public class PlayerStats : MonoBehaviour
     public AudioClip aliceHurt;
     public AudioClip aliceDeath;
 
+    public GameObject gameOverScreen;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -196,6 +198,8 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Game Over!");
 
         isDead = true;
+
+        gameOverScreen.SetActive(true);
 
         animations.anim.SetTrigger("dead");
 
