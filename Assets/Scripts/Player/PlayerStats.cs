@@ -30,6 +30,10 @@ public class PlayerStats : MonoBehaviour
 
     public bool isDead = false;
 
+    public AudioSource soundPlayer;
+    public AudioClip aliceHurt;
+    public AudioClip aliceDeath;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -59,6 +63,8 @@ public class PlayerStats : MonoBehaviour
         animations.anim.SetTrigger("IsHurt");
 
         StartCoroutine(InvincibilityWindow());
+
+        soundPlayer.PlayOneShot(aliceHurt);
 
         if (curHealth <= 0)
         {
@@ -192,7 +198,8 @@ public class PlayerStats : MonoBehaviour
         isDead = true;
 
         animations.anim.SetTrigger("dead");
-        animations.anim.SetBool("IsDead", true);
+
+        soundPlayer.PlayOneShot(aliceDeath);
         // Colocar o fim do jogo
     }
 

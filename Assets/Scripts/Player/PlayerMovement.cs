@@ -31,8 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerStats stats;
 
-    public PlayerAnimation animator;
-    
+    public PlayerAnimation animator;    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

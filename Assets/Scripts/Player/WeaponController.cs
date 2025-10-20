@@ -6,6 +6,11 @@ public class WeaponController : MonoBehaviour
     public PlayerStats player;
     public PlayerMovement movement;
 
+    public AudioSource source;
+    public AudioClip snip;
+
+    bool once;
+
     IEnumerator PassThrough()
     {
         Physics2D.IgnoreCollision(
@@ -39,13 +44,33 @@ public class WeaponController : MonoBehaviour
             if(!player.insanityActive)
                 player.IncreaseInsanity();
 
+            
+            if(!once)
+                StartCoroutine(PlayAudio());
+
             collision.GetComponent<Enemy>().Death();
         }
         else if (collision.gameObject.CompareTag("Boss"))
         {
+            if (collision.gameObject.GetComponent<Boss>().IsInvulnerable()) return;
+
             collision.gameObject.GetComponent<Boss>().TakeDamage(1);
+
+            if(!once)
+                StartCoroutine(PlayAudio());
 
             StartCoroutine(PassThrough());
         }
+    }
+
+    IEnumerator PlayAudio()
+    {
+        source.PlayOneShot(snip);
+
+        once = true;
+
+        yield return new WaitForSeconds(0.2f);
+
+        once = false;
     }
 }
