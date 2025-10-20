@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 
 
@@ -17,6 +18,7 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene()
     {
+        fadeController.GetComponent<Image>().color = Color.black;
         string sceneNameToLoad = GetSceneName();
         StartCoroutine(ChangeSceneRoutine(sceneNameToLoad));
     }
