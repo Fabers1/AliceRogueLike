@@ -65,6 +65,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void MoveLeft()
+    {
+        if (stats.isDead) return;
+
+        moveInput.x = -1;
+    }
+
+    public void LiftButtonUp()
+    {
+        if (stats.isDead) return;
+
+        moveInput.x = 0;
+    }
+
     public void MoveRight(InputAction.CallbackContext context)
     {
         if (stats.isDead) return;
