@@ -3,6 +3,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Script de movimento do personagem. Limpar depois para retirar os metodos
+/// do InputSystem que não funciona em certos aparelhos.
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     public InputActionAsset inputActionAsset;
@@ -65,6 +69,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void MoveRight()
+    {
+        if (stats.isDead) return;
+
+        moveInput.x = 1;
+    }
+
     public void MoveLeft()
     {
         if (stats.isDead) return;
@@ -94,6 +105,16 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void JumpBtn()
+    {
+        if (stats.isDead) return;
+
+        if (OnGround())
+        {
+            Jump();
+        }
+    }
+
     public void Jump(InputAction.CallbackContext context)
     {
         if (stats.isDead) return;
@@ -101,6 +122,16 @@ public class PlayerMovement : MonoBehaviour
         if (context.started && OnGround())
         {
             Jump();
+        }
+    }
+
+    public void DropdownBtn()
+    {
+        if (stats.isDead) return;
+
+        if (OnGround())
+        {
+            DropDownPlatform();
         }
     }
 
