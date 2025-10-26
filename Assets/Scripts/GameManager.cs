@@ -1,19 +1,47 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public SpawnManager spawnManager;
-    public StageConfiguration currentWave;
-    public float startDelay = 0.5f;
+    public static GameManager instance;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [HideInInspector]
+    public int level = 1;
+    public TextMeshProUGUI levelTxt;
+    [HideInInspector]
+    public int xp;
+    public int xpThreshold = 1000;
+    public Slider xpSlider;
+    public TextMeshProUGUI xpTxt;
+
+    public int startHealth = 5;
+
+    private void Awake()
     {
-        Invoke("StartSpawn", startDelay);
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        levelTxt.text = level.ToString();
+        xpTxt.text = $"{xp}/{xpThreshold}";
+        xpSlider.value = xp;
+        xpSlider.maxValue = xpThreshold;
     }
 
     public void WinGame()
     {
         Debug.Log("Level Won!");
     }
+
+
 }
