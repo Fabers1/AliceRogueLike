@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [HideInInspector]
+    public int currentLevel = 1;
+
     public int curMaxHealth = 3;
     int originalMaxHealth;
     [HideInInspector]
     public int curHealth;
 
+    [Header("Insanity Settings")]
     public int maxInsanity = 50;
     [HideInInspector]
     public int curInsanity;
@@ -19,11 +23,7 @@ public class PlayerStats : MonoBehaviour
     public float invincibilityDuration = 1.5f;
     [HideInInspector]
     public bool isInvincible = false;
-
-    public int xp;
-    public int xpThreshold;
-    public int level = 1;
-
+    
     Vector3 originalScale;
 
     public PlayerAnimation animations;
@@ -39,10 +39,21 @@ public class PlayerStats : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        originalMaxHealth = curMaxHealth;
-        curHealth = curMaxHealth;
-
         originalScale = transform.localScale;
+    }
+
+    private void Start()
+    {
+        if (GameManager.instance != null) 
+        {
+            curMaxHealth = GameManager.instance.startHealth;
+            currentLevel = GameManager.instance.level;
+        }
+
+        curHealth = curMaxHealth;
+        originalMaxHealth = curMaxHealth;
+
+        OnHealthChanged?.Invoke(curHealth);
     }
 
     public void RecoverHealth(int health)
@@ -81,8 +92,6 @@ public class PlayerStats : MonoBehaviour
     IEnumerator InvincibilityWindow()
     {
         isInvincible = true;
-
-        // Optional: Add visual feedback (flashing effect)
         StartCoroutine(FlashPlayer());
 
         yield return new WaitForSeconds(invincibilityDuration);
@@ -108,16 +117,35 @@ public class PlayerStats : MonoBehaviour
         sprite.enabled = true;
     }
 
-    public void LevelUp()
+    public void OnLevelUp()
     {
-        level++;
-        xpThreshold += 1000;
-        xp = 0;
-        curMaxHealth += level;
-        originalMaxHealth += level;
-        curHealth += level;
+        if(GameManager.instance == null) return;
+
+        currentLevel = GameManager.instance.level;
+        curMaxHealth = GameManager.instance.startHealth;
+        originalMaxHealth = curMaxHealth;
+
+        curHealth += currentLevel;
+        if(curHealth > curMaxHealth)
+        {
+            curHealth = curMaxHealth;
+        }
 
         OnHealthChanged?.Invoke(curHealth);
+    }
+
+    public void GainXP(int amount)
+    {
+        if(GameManager.instance != null)
+        {
+            int previousLevl = GameManager.instance.level;
+            GameManager.instance.AddXP(amount);
+
+            if(GameManager.instance.level > previousLevl)
+            {
+                OnLevelUp();
+            }
+        }
     }
 
     public void IncreaseInsanity()

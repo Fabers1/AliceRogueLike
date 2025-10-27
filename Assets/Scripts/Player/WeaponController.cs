@@ -34,12 +34,7 @@ public class WeaponController : MonoBehaviour
         {
             Debug.Log("Enemy hit!");
 
-            player.xp += 100;
-
-            if (player.xp >= player.xpThreshold) 
-            {
-                player.LevelUp();
-            }
+            player.GainXP(100);
 
             if(!player.insanityActive)
                 player.IncreaseInsanity();

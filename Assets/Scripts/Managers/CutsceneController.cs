@@ -98,11 +98,7 @@ public class CutsceneController : MonoBehaviour
 
         fadeOverlay.transform.SetAsLastSibling();
 
-        Debug.Log($"InitialFade START - Alpha: {fadeOverlay.color.a}");
-
         yield return StartCoroutine(Fade(1, 0, fadeDuration));
-
-        Debug.Log($"InitialFade END - Alpha: {fadeOverlay.color.a}");
     }
 
     public void StartCutscene()
@@ -129,7 +125,6 @@ public class CutsceneController : MonoBehaviour
 
         fadeOverlay.transform.SetAsLastSibling();
 
-        Debug.Log($"FadeSequence - Escurecendo (0 -> 1)");
         // Escurece
         yield return StartCoroutine(Fade(0, 1, fadeDuration));
 
@@ -137,7 +132,6 @@ public class CutsceneController : MonoBehaviour
         if (hideImage != null && deactivateHide) hideImage.gameObject.SetActive(false);
         showImage.gameObject.SetActive(true);
 
-        Debug.Log($"FadeSequence - Clareando (1 -> 0)");
         // Clareia
         yield return StartCoroutine(Fade(1, 0, fadeDuration));
 
@@ -189,8 +183,6 @@ public class CutsceneController : MonoBehaviour
     {
         float elapsed = 0f;
 
-        Debug.Log($"Fade iniciado - Start: {start}, End: {end}, Duration: {duration}");
-
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
@@ -205,8 +197,6 @@ public class CutsceneController : MonoBehaviour
         fadeOverlay.raycastTarget = (end > 0.9f);
 
         SetFadeAlpha(end);
-
-        Debug.Log($"Fade concluído - Alpha final: {fadeOverlay.color.a}");
     }
 
     // Método centralizado para mudar o alpha e forçar atualização
@@ -224,7 +214,5 @@ public class CutsceneController : MonoBehaviour
 
         // Marca como dirty para forçar redesenho
         fadeOverlay.SetAllDirty();
-
-        Debug.Log($"Alpha setado para: {alpha:F3}");
     }
 }
