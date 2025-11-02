@@ -4041,6 +4041,10 @@ PrefabInstance:
       propertyPath: movement
       value: 
       objectReference: {fileID: 2090297070}
+    - target: {fileID: 6614828801775645711, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: timePerKill
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: stats
       value: 
@@ -4129,6 +4133,10 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1796589145}
+    - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+      propertyPath: originalInsanityTriggerTime
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

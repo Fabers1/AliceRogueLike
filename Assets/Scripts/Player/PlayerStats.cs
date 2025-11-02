@@ -13,10 +13,19 @@ public class PlayerStats : MonoBehaviour
     public int curHealth;
 
     [Header("Insanity Settings")]
-    public int maxInsanity = 50;
+    [Tooltip("Time in seconds before insanity effect triggers")]
+    public float originalInsanityTriggerTime = 10f;
+    float modifiedInsanityTriggerTimer;
+    [Tooltip("Duration of the insanity effect")]
+    public float insanityEffectDuration = 10f;
+    [Tooltip("Maximum time that can be accumulated")]
+    public float maxInsanityTime = 120f;
+
+    private Coroutine insanityCoroutine;
+
     [HideInInspector]
-    public int curInsanity;
-    public float insanityDelay = 10f;
+    public float currentInsanityTimer;
+    [HideInInspector]
     public bool insanityActive = false;
 
     [Header("Invincibility Settings")]
@@ -52,8 +61,27 @@ public class PlayerStats : MonoBehaviour
 
         curHealth = curMaxHealth;
         originalMaxHealth = curMaxHealth;
+        modifiedInsanityTriggerTimer = originalInsanityTriggerTime;
 
         OnHealthChanged?.Invoke(curHealth);
+        OnInsanityTimerChanged?.Invoke(currentInsanityTimer, modifiedInsanityTriggerTimer);
+    }
+
+    private void Update()
+    {
+        if (isDead || insanityActive) return;
+
+        // Decrease timer over time
+        currentInsanityTimer += Time.deltaTime;
+
+        // Trigger insanity when timer reaches zero
+        if (currentInsanityTimer >= modifiedInsanityTriggerTimer)
+        {
+            currentInsanityTimer = modifiedInsanityTriggerTimer;
+            TriggerInsanity();
+        }
+
+        OnInsanityTimerChanged?.Invoke(currentInsanityTimer, modifiedInsanityTriggerTimer);
     }
 
     public void RecoverHealth(int health)
@@ -77,14 +105,18 @@ public class PlayerStats : MonoBehaviour
 
         StartCoroutine(InvincibilityWindow());
 
-        soundPlayer.PlayOneShot(aliceHurt);
-
         if (curHealth <= 0)
         {
             curHealth = 0;
 
             Death();
+
+            OnHealthChanged?.Invoke(curHealth);
+
+            return;
         }
+
+        soundPlayer.PlayOneShot(aliceHurt);
 
         OnHealthChanged?.Invoke(curHealth);
     }
@@ -148,45 +180,64 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void IncreaseInsanity()
+    public void DelayInsanity(float amount)
     {
-        curInsanity += 2;
+        if(isDead) return;
 
-        if (curInsanity >= maxInsanity)
+        currentInsanityTimer -= amount;
+
+        if(currentInsanityTimer <= 0)
         {
-            StartCoroutine(InsanityOn());
+            currentInsanityTimer = 0;
         }
 
-        OnInsanityChanged?.Invoke(curInsanity);
+        OnInsanityTimerChanged?.Invoke(currentInsanityTimer, modifiedInsanityTriggerTimer);
     }
 
-    IEnumerator InsanityOn()
+    public void TriggerInsanity()
     {
+        if (insanityActive || isDead) return;
+
+        if(insanityCoroutine != null)
+        {
+            StopCoroutine(insanityCoroutine);
+        }
+
+        insanityCoroutine = StartCoroutine(InsanityEffect());
+    }
+
+    IEnumerator InsanityEffect()
+    {
+        insanityActive = true;
+        OnInsanityStateChanged?.Invoke(true);
+
         int randomEffect = UnityEngine.Random.Range(0, 2);
 
+        PlayerMovement movement = GetComponent<PlayerMovement>();
+        float originalSpeed = movement != null ? movement.modifiedSpeed : 0f;
         insanityActive = true;
 
         if (randomEffect == 0)
         {
-            Vector3 currentScale = transform.localScale;
-            currentScale /= 2;
-            transform.localScale = currentScale;
+            transform.localScale = originalScale * 0.5f;
 
-            curMaxHealth /= 2;
+            curMaxHealth = Mathf.Max(1, originalMaxHealth / 2);
             if (curHealth > curMaxHealth)
             {
                 curHealth = curMaxHealth;
+                OnHealthChanged?.Invoke(curHealth);
             }
 
-            GetComponent<PlayerMovement>().modifiedSpeed *= 2;
+            if(movement != null)
+            {
+                movement.modifiedSpeed *= 2;
+            }
 
             Debug.Log("Garrafa Misteriosa");
         }
         else if (randomEffect == 1)
         {
-            Vector3 currentScale = transform.localScale;
-            currentScale *= 2;
-            transform.localScale = currentScale;
+            transform.localScale = originalScale * 2f;
 
             curMaxHealth *= 2;
 
@@ -197,28 +248,41 @@ public class PlayerStats : MonoBehaviour
                 curHealth = curMaxHealth;
             }
 
-            GetComponent<PlayerMovement>().modifiedSpeed /= 2;
+            OnHealthChanged?.Invoke(curHealth);
+
+            if(movement != null)
+            {
+                movement.modifiedSpeed = originalSpeed * 0.5f;
+            }
 
             Debug.Log("Bolo Misterioso");
         }
 
-        yield return new WaitForSeconds(insanityDelay);
+        yield return new WaitForSeconds(insanityEffectDuration);
 
         Debug.Log("Time's Up!");
 
         transform.localScale = originalScale;
         curMaxHealth = originalMaxHealth;
 
-        curInsanity = 0;
-
-        insanityActive = false;
-
-        if (curHealth > curMaxHealth)
+        if(curHealth > curMaxHealth)
         {
             curHealth = curMaxHealth;
+            OnHealthChanged?.Invoke(curHealth);
+        }
+        
+        if(movement != null)
+        {
+            movement.modifiedSpeed = movement.originalSpeed;
         }
 
-        GetComponent<PlayerMovement>().modifiedSpeed = GetComponent<PlayerMovement>().originalSpeed;
+        currentInsanityTimer = 0;
+
+        modifiedInsanityTriggerTimer = originalInsanityTriggerTime;
+        insanityActive = false;
+
+        OnInsanityStateChanged?.Invoke(false);
+        OnInsanityTimerChanged?.Invoke(currentInsanityTimer, originalInsanityTriggerTime);
     }
 
     private void Death()
@@ -241,6 +305,7 @@ public class PlayerStats : MonoBehaviour
         // Colocar o fim do jogo
     }
 
-    public event System.Action<int> OnHealthChanged;
-    public event System.Action<int> OnInsanityChanged;
+    public event Action<int> OnHealthChanged;
+    public event Action<float, float> OnInsanityTimerChanged;
+    public event Action<bool> OnInsanityStateChanged;
 }

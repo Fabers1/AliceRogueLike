@@ -18,11 +18,11 @@ public class StatusUI : MonoBehaviour
     {
         healthText.text = $"{playerStats.curHealth:F0}";
 
-        insanityTxt.text = $"{playerStats.curInsanity:F0}";
+        insanityTxt.text = $"{playerStats.currentInsanityTimer:F0}";
 
         playerStats.OnHealthChanged += UpdateHealth;
 
-        playerStats.OnInsanityChanged += UpdateInsanity;
+        playerStats.OnInsanityTimerChanged += UpdateInsanity;
 
         enemyAmount = SpawnManager.instance;
 
@@ -36,7 +36,7 @@ public class StatusUI : MonoBehaviour
         healthText.text = $"{curHealth:F0}";
     }
 
-    private void UpdateInsanity(int curInsanity)
+    private void UpdateInsanity(float curInsanity, float insanityTriggerTime)
     {
         insanityTxt.text = $"{curInsanity:F0}";
     }

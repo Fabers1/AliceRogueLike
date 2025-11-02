@@ -6,6 +6,8 @@ public class WeaponController : MonoBehaviour
     public PlayerStats player;
     public PlayerMovement movement;
 
+    public float timePerKill = 1f;
+
     public AudioSource source;
     public AudioClip snip;
 
@@ -37,7 +39,7 @@ public class WeaponController : MonoBehaviour
             player.GainXP(100);
 
             if(!player.insanityActive)
-                player.IncreaseInsanity();
+                player.DelayInsanity(timePerKill);
 
             
             if(!once)
