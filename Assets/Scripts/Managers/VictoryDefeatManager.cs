@@ -59,10 +59,6 @@ public class VictoryDefeatManager : MonoBehaviour
     // Método para sair do jogo (útil para botões de sair)
     public void SairDoJogo()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
             Application.Quit();
-#endif
     }
 }

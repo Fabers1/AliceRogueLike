@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccbec2dd4c7f4c4db2bb545f5fee63f, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  stageName: Level 0
+  stageNumber: 0
+  totalEnemyCount: 5
+  maxSimultaneousEnemies: 10
+  enemyTypes:
+  - enemyType: {fileID: 11400000, guid: 987df8c0adc562d47956ee0041334821, type: 2}
+    spawnWeight: 0
+    minSpawnDelay: 1
+    maxSpawnDelay: 3
+  spawnPoints:
+  - {x: -7.4, y: -0.96}
+  - {x: 7, y: -0.96}
+  - {x: 6.59, y: 3.05}
+  - {x: -6.45, y: 3.05}
+  - {x: -6.45, y: 5.05}
+  - {x: 7, y: 5.05}
+  - {x: 7, y: -3}
+  - {x: -7, y: -3}
+  - {x: 1.7, y: 1.1}
+  - {x: -2.8, y: 1.1}
+  - {x: 0, y: 3}
+  - {x: 0, y: 5}
+  - {x: 0, y: -3}
+  initialSpawnDelay: 1
+  spawnCheckInterval: 1.5
+  waitForCompletion: 1
+  healthMultiplier: 1
+  speedMultiplier: 1
+  hasBoss: 0
+  bossData: {fileID: 11400000, guid: 80a16550a5ea9fb439d9d258c6417778, type: 2}
+  bossSpawnPosition: {x: 0, y: 4.1}
+  stopEnemiesForBoss: 1

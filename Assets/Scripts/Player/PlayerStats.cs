@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour
     public float maxInsanityTime = 120f;
 
     private Coroutine insanityCoroutine;
+    int nextTransformationType = -1;
 
     [HideInInspector]
     public float currentInsanityTimer;
@@ -44,6 +45,9 @@ public class PlayerStats : MonoBehaviour
     public AudioClip aliceDeath;
 
     public GameObject gameOverScreen;
+    public GameObject uiBiscuitChoice;
+
+    PowerUpManager powerUpManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -62,6 +66,11 @@ public class PlayerStats : MonoBehaviour
         curHealth = curMaxHealth;
         originalMaxHealth = curMaxHealth;
         modifiedInsanityTriggerTimer = originalInsanityTriggerTime;
+
+        if(PowerUpManager.instance != null)
+        {
+            powerUpManager = PowerUpManager.instance;
+        }
 
         OnHealthChanged?.Invoke(curHealth);
         OnInsanityTimerChanged?.Invoke(currentInsanityTimer, modifiedInsanityTriggerTimer);
@@ -206,12 +215,37 @@ public class PlayerStats : MonoBehaviour
         insanityCoroutine = StartCoroutine(InsanityEffect());
     }
 
+    public void SetNextTransformation(int transformationType)
+    {
+        nextTransformationType = transformationType;
+        Time.timeScale = 1f;
+        uiBiscuitChoice.SetActive(false);
+    }
+
     IEnumerator InsanityEffect()
     {
         insanityActive = true;
         OnInsanityStateChanged?.Invoke(true);
 
         int randomEffect = UnityEngine.Random.Range(0, 2);
+
+        if(powerUpManager != null && powerUpManager.canChooseTransformation && !uiBiscuitChoice.activeInHierarchy)
+        {
+            uiBiscuitChoice.SetActive(true);
+        }
+
+        while (uiBiscuitChoice.activeInHierarchy)
+        {
+            Time.timeScale = 0f;
+            yield return null;
+        }
+
+        if(nextTransformationType != -1)
+        {
+            randomEffect = nextTransformationType;
+            powerUpManager.canChooseTransformation = false;
+            nextTransformationType = -1;
+        }
 
         PlayerMovement movement = GetComponent<PlayerMovement>();
         float originalSpeed = movement != null ? movement.modifiedSpeed : 0f;

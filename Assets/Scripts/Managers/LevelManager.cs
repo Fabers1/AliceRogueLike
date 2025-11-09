@@ -14,12 +14,16 @@ public class LevelManager : MonoBehaviour
     public UnityEngine.Events.UnityEvent<string> OnStageStarted; // Stage name
     public UnityEngine.Events.UnityEvent<int> OnLevelComplete; // Final stage number
 
+    public GameObject winScreen;
+
     private void Start()
     {
         if (spawnManager != null)
         {
             spawnManager.OnStageCompleted.AddListener(OnStageCompleted);
         }
+
+        winScreen.SetActive(false);
 
         StartNextStage();
     }
@@ -39,6 +43,8 @@ public class LevelManager : MonoBehaviour
         else
         {
             OnLevelComplete?.Invoke(stages.Count);
+
+            winScreen.SetActive(true);
             Debug.Log("All stages complete!");
         }
     }
@@ -56,6 +62,18 @@ public class LevelManager : MonoBehaviour
 
         OnStageStarted?.Invoke(stage.stageName);
         spawnManager.StartStage(stage);
+    }
+
+    public void OnPowerUpSelectedContinue()
+    {
+        if (currentStageIndex < stages.Count)
+        {
+            StartNextStage();
+        }
+        else
+        {
+            Debug.Log("All stages complete!");
+        }
     }
 
     // Manual controls for testing

@@ -36,7 +36,14 @@ public class WeaponController : MonoBehaviour
         {
             Debug.Log("Enemy hit!");
 
-            player.GainXP(100);
+            int xpToReceive = 100;
+
+            if (PowerUpManager.instance != null)
+            {
+                xpToReceive *= PowerUpManager.instance.totalXPMultiplier;
+            }
+
+            player.GainXP(xpToReceive);
 
             if(!player.insanityActive)
                 player.DelayInsanity(timePerKill);
