@@ -291,8 +291,17 @@ public class PlayerStats : MonoBehaviour
 
             Debug.Log("Bolo Misterioso");
         }
+        
+        float elapsedTime = 0f;
+        OnInsanityTimerChanged?.Invoke(insanityEffectDuration, insanityEffectDuration);
 
-        yield return new WaitForSeconds(insanityEffectDuration);
+        while (elapsedTime < insanityEffectDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float remainingTime = insanityEffectDuration - elapsedTime;
+            OnInsanityTimerChanged?.Invoke(remainingTime, insanityEffectDuration);
+            yield return null;
+        }
 
         Debug.Log("Time's Up!");
 

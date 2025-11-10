@@ -39,6 +39,11 @@ public class StatusUI : MonoBehaviour
     private void UpdateInsanity(float curInsanity, float insanityTriggerTime)
     {
         insanityTxt.text = $"{curInsanity:F0}";
+
+        if(playerStats.insanityActive)
+            insanityTxt.color = Color.yellow;
+        else 
+            insanityTxt.color = Color.white;
     }
 
     private void UpdateEnemyCount(int curEnemy, int remainingEnemy)
