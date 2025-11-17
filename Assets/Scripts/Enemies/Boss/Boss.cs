@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class Boss : MonoBehaviour
 {
@@ -25,6 +23,10 @@ public class Boss : MonoBehaviour
     bool isInvulnerable = true;
     Transform player;
     float stateTimer = 0f;
+
+    Transform topPlatform;
+    Vector2 platformPosition;
+    float platformYOffset = 1.5f;
 
     float nextBurstTime = 0f;
     bool isShooting = false;
@@ -71,10 +73,32 @@ public class Boss : MonoBehaviour
 
         InitializeAnimator();
 
+        FindTopmostPlatform();
+
         ChangeState(BossState.Moving);
     }
 
-    // <summary>
+    void FindTopmostPlatform()
+    {
+        topPlatform = PlatformDetector.FindTopmostPlatform();
+
+        if (topPlatform != null)
+        {
+            platformPosition = PlatformDetector.GetPositionOnPlatform(
+                topPlatform,
+                xOffset: 0f,
+                yOffset: platformYOffset
+            );
+
+            Debug.Log($"Boss will position on platform at: {platformPosition}");
+        }
+        else
+        {
+            platformPosition = transform.position;
+        }
+    }
+
+    /// <summary>
     /// Sets up initial animation parameters.
     /// Call this once when boss spawns.
     /// </summary>
@@ -220,7 +244,7 @@ public class Boss : MonoBehaviour
         isInvulnerable = true;
 
         // Target: directly above player, 3 units up
-        Vector2 targetPosition = new Vector2(player.position.x, player.position.y + 2.5f);
+        Vector2 targetPosition = platformPosition;
         Vector2 currentPosition = transform.position;
 
         // Calculate direction to target

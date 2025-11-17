@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99f1f4675e5d3bc4a81130ee51a1628a, type: 3}
-  m_Name: Enemy
+  m_Name: Rat
   m_EditorClassIdentifier: 
-  enemyName: Card
+  enemyName: Rat
   moveSpeed: 3
   prefab: {fileID: 251388357990432521, guid: b0fb6a00bf1d2e84b85995e1f41117a4, type: 3}

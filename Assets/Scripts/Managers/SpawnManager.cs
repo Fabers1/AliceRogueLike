@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -9,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     public static SpawnManager instance;
 
     [SerializeField] List<EnemyPool> enemyPools = new List<EnemyPool>();
+
+    [SerializeField] Transform playerTransform;
 
     [SerializeField] StageConfiguration currentStage;
 
@@ -21,6 +22,8 @@ public class SpawnManager : MonoBehaviour
     List<Enemy> activeEnemies = new List<Enemy>();
     int enemiesSpawned = 0;
     int enemiesDefeated = 0;
+    int failedSpawnAttempts = 0;
+    float originalDistanceToPlayer;
     bool stageActive = false;
     Coroutine spawnCoroutine;
 
@@ -34,6 +37,15 @@ public class SpawnManager : MonoBehaviour
         instance = this;
 
         InitializePoolLookup();
+
+        if (playerTransform == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) 
+            { 
+                playerTransform = player.transform;
+            }
+        }
     }
 
     private void InitializePoolLookup()
@@ -64,6 +76,8 @@ public class SpawnManager : MonoBehaviour
         activeEnemies.Clear();
         stageActive = true;
 
+        originalDistanceToPlayer = currentStage.minDistanceFromPlayer;
+
         spawnCoroutine = StartCoroutine(SpawnCoroutine());
     }
 
@@ -71,11 +85,11 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(currentStage.initialSpawnDelay);
 
-        while(enemiesSpawned < currentStage.totalEnemyCount)
+        while (enemiesSpawned < currentStage.totalEnemyCount)
         {
-            if(activeEnemies.Count < currentStage.maxSimultaneousEnemies)
+            if (activeEnemies.Count < currentStage.maxSimultaneousEnemies)
             {
-                SpawnRandomEnemy();
+                TrySpawnRandomEnemy();
             }
 
             yield return new WaitForSeconds(currentStage.spawnCheckInterval);
@@ -86,27 +100,95 @@ public class SpawnManager : MonoBehaviour
         CompleteStage();
     }
 
-    void SpawnRandomEnemy()
+    void TrySpawnRandomEnemy()
     {
         EnemyData enemyData = currentStage.GetRandomEnemyType();
 
-        if(enemyData == null)
+        if (enemyData == null)
         {
             Debug.LogError("No enemy types configured in stage!");
             return;
         }
 
-        if(!poolLookup.TryGetValue(enemyData, out EnemyPool pool))
+        if (!poolLookup.TryGetValue(enemyData, out EnemyPool pool))
         {
             Debug.LogError($"No pool found for enemyType: {enemyData.enemyName}");
             return;
         }
 
-        Vector2 spawnPos = currentStage.GetRandomSpawnPoint();
+        Vector2 safePos;
+        if(FindSafeSpawnPosition(out safePos))
+        {
+            SpawnEnemyAt(enemyData, pool, safePos);
+            failedSpawnAttempts = 0;
+            currentStage.minDistanceFromPlayer = originalDistanceToPlayer;
+        }
+        else
+        {
+            failedSpawnAttempts++;
 
-        Enemy enemy = pool.SpawnEnemy(spawnPos);
+            Debug.LogWarning("Failed to find safe location");
 
-        if(enemy == null)
+            if(failedSpawnAttempts > 10)
+            {
+                currentStage.minDistanceFromPlayer -= 0.5f;
+            }
+        }
+    }
+
+    private bool FindSafeSpawnPosition(out Vector2 safePos)
+    {
+        safePos = Vector2.zero;
+
+        if(playerTransform == null)
+        {
+            Debug.LogError("Player reference missing!");
+            return false;
+        }
+
+        Vector2 playerPos = playerTransform.position;
+
+        // Tenta encontrar uma posição segura
+        for(int attempt = 0; attempt < currentStage.maxSpawnAttempts; attempt++)
+        {
+            Vector2 candidatePos = currentStage.GetRandomSpawnPoint();
+
+            // Verifique distancia até o jogador
+            float distanceToPlayer = Vector2.Distance(candidatePos, playerPos);
+            if(distanceToPlayer < currentStage.minDistanceFromPlayer)
+            {
+                continue; // Perto demais do jogador, tente novamente
+            }
+
+            // Verifique a distância com outros inimigos ativos
+            bool tooCloseToEnemies = false;
+            foreach (Enemy enemy in activeEnemies)
+            {
+                float distanceToEnemy = Vector2.Distance(candidatePos, enemy.transform.position);
+                if (distanceToEnemy < currentStage.minDistanceFromPlayer) 
+                { 
+                    tooCloseToEnemies = true;
+                    break;
+                }
+            }
+
+            if (tooCloseToEnemies) 
+            {
+                continue;
+            }
+
+            safePos = candidatePos;
+            return true;
+        }
+
+        return false;
+    }
+
+    private void SpawnEnemyAt(EnemyData enemyData, EnemyPool pool, Vector2 safePos)
+    {
+        Enemy enemy = pool.SpawnEnemy(safePos);
+
+        if (enemy == null)
         {
             Debug.LogError("Failed to spawn enemy from pool!");
             return;
@@ -125,7 +207,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void HandleEnemyDeath(Enemy enemy) 
+    void HandleEnemyDeath(Enemy enemy)
     {
         enemy.OnDeath -= HandleEnemyDeath;
 
@@ -151,7 +233,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (!stageActive) return;
 
-        if(currentStage.hasBoss && currentBoss == null)
+        if (currentStage.hasBoss && currentBoss == null)
         {
             gameMusic.Pause();
             bossMusic.Play();
@@ -180,7 +262,7 @@ public class SpawnManager : MonoBehaviour
     {
         Debug.Log("All enemies defeated! Spawning boss...");
 
-        if(currentStage.stopEnemiesForBoss && spawnCoroutine != null)
+        if (currentStage.stopEnemiesForBoss && spawnCoroutine != null)
         {
             StopCoroutine(spawnCoroutine);
             spawnCoroutine = null;
@@ -193,7 +275,7 @@ public class SpawnManager : MonoBehaviour
         );
 
         currentBoss = bossObj.GetComponent<Boss>();
-        if (currentBoss != null) 
+        if (currentBoss != null)
         {
             currentBoss.Initialize(currentStage.bossData);
             currentBoss.OnBossDeath += HandleBossDeath;
@@ -235,7 +317,7 @@ public class SpawnManager : MonoBehaviour
             enemy.ReturnToPool();
         }
 
-        if(currentBoss != null)
+        if (currentBoss != null)
         {
             currentBoss.OnBossDeath -= HandleBossDeath;
             Destroy(currentBoss.gameObject);

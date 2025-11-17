@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!95 &4115124 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1087225341817314652, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-  m_PrefabInstance: {fileID: 1428142153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4116562
 GameObject:
   m_ObjectHideFlags: 0
@@ -6005,11 +6000,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330284943}
   m_CullTransparentMesh: 1
---- !u!1 &1390512911 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7949251271099845971, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-  m_PrefabInstance: {fileID: 1428142153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1392377499
 GameObject:
   m_ObjectHideFlags: 0
@@ -6284,20 +6274,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: stats
-      value: 
-      objectReference: {fileID: 2090297065}
-    - target: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 2090297066}
-    - target: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: jumpForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: bottomSize
-      value: 0.7
+      propertyPath: verticalActivatesWeapon
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7797987241878450137, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6344,28 +6322,8 @@ PrefabInstance:
       value: CharacterAlice 1
       objectReference: {fileID: 0}
     - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: aliceHurt
-      value: 
-      objectReference: {fileID: 8300000, guid: 24e8f957023e64948888565c61714dac, type: 3}
-    - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: aliceDeath
-      value: 
-      objectReference: {fileID: 8300000, guid: 84bd9ed209c7aa249bccf6224a3bfd74, type: 3}
-    - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: animations
-      value: 
-      objectReference: {fileID: 2090297066}
-    - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: maxInsanity
       value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: soundPlayer
-      value: 
-      objectReference: {fileID: 2090297071}
-    - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: curMaxHealth
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
       propertyPath: gameOverScreen
@@ -6375,20 +6333,10 @@ PrefabInstance:
       propertyPath: uiBiscuitChoice
       value: 
       objectReference: {fileID: 1956342392}
-    - target: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      propertyPath: originalInsanityTriggerTime
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7949251271099845971, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2090297066}
-    - targetCorrespondingSourceObject: {fileID: 7949251271099845971, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2090297071}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
 --- !u!114 &1428142154 stripped
 MonoBehaviour:
@@ -8883,7 +8831,7 @@ MonoBehaviour:
   scaleToFullWidth: 1
   platformWidthPercentage: 1
   extraWidth: 0.1
-  updateContinuously: 1
+  updateContinuously: 0
   autoAddColliders: 1
 --- !u!114 &2023572260
 MonoBehaviour:
@@ -9012,133 +8960,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8635431779975870775, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
   m_PrefabInstance: {fileID: 1428142153}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390512911}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb43c1b7cad4b374c8a31540fc11b541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2090297066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390512911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0bcd97e3b70874fb79341ea2821f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 4115124}
 --- !u!114 &2090297070 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6794347905551040995, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
   m_PrefabInstance: {fileID: 1428142153}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390512911}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f46f3736e8f23c43968f4c4e666b382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &2090297071
+--- !u!82 &2090297071 stripped
 AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2468130873306422585, guid: dc97a4000f2de26459e4b6aaca88136b, type: 3}
+  m_PrefabInstance: {fileID: 1428142153}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390512911}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5814616698648263013, guid: 86fac9b737e9eee4a9726bafe7de8e2a, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &2094906700
 GameObject:
   m_ObjectHideFlags: 0

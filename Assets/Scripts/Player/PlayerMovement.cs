@@ -33,11 +33,14 @@ public class PlayerMovement : MonoBehaviour
     public GameObject lastPlatform;
     bool facingRight = true;
 
+    public bool verticalActivatesWeapon = false;
+
     public PlayerStats stats;
 
     public PlayerAnimation animator;    
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public WeaponController controller;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         jumpAction = InputSystem.actions.FindAction("Jump");
 
         modifiedSpeed = originalSpeed;
+
+        controller.gameObject.SetActive(false);
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -152,10 +157,16 @@ public class PlayerMovement : MonoBehaviour
         if (rb.linearVelocityX != 0)
         {
             animator.anim.SetBool("IsMoving", true);
+            controller.gameObject.SetActive(true);
+        }
+        else if (verticalActivatesWeapon && rb.linearVelocityY != 0)
+        {
+            controller.gameObject.SetActive(true);
         }
         else
         {
             animator.anim.SetBool("IsMoving", false);
+            controller.gameObject.SetActive(false);
         }
 
         if ((moveInput.x > 0 && !facingRight) || (moveInput.x < 0 && facingRight)) 

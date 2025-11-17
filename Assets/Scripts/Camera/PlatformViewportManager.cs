@@ -180,8 +180,6 @@ public class PlatformViewportManager : MonoBehaviour
                 SetupPlatform(platformInfo.platform, viewportWidth, widthPercentage);
             }
         }
-
-        Debug.Log($"Platforms setup complete - Viewport: {viewportWidth:F2} x {viewportHeight:F2}");
     }
 
     void SetupMainFloor(float viewportWidth, float viewportHeight, Vector3 cameraPos)
